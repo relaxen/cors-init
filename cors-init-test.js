@@ -1,6 +1,6 @@
 const getData = (function () {
 	'use strict';
-	return (customEvent) => {
+	return async (customEvent) => {
 		const [districtId, realtyComplexId, flateId] = customEvent.detail.ids;
 
 		const districtNode = document.getElementById(districtId);
@@ -16,13 +16,15 @@ const getData = (function () {
 			method: 'GET',
 			headers,
 		};
-		fetch('https://lk.vectoranalytics.ru/test.php', opt).then((response) => {
-			console.log(response);
-		});
-
-		console.log(districtNode);
-		console.log(realtyComplexNode);
-		console.log(flateNode);
+		try {
+			const result = fetch('https://lk.vectoranalytics.ru/test.php', opt);
+			const { district, flate } = result.estimates;
+			districtNode.innerHTML = district;
+			flateNode.innerHTML = flate;
+			realtyComplexNode.innerHTML = result.estimates['realty complex'];
+		} catch (error) {
+			console.warn(error);
+		}
 	};
 })();
 window.addEventListener('getData', getData);
