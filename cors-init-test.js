@@ -9,7 +9,7 @@ const getData = (function () {
 
 		let headers = new Headers();
 
-		headers.append('Content-Type', 'application/json');
+		headers.append('Content-Type', 'text/javascript');
 
 		var opt = {
 			mode: 'cors',
