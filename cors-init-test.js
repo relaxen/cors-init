@@ -29,6 +29,8 @@ const getData = (function () {
 			realtyComplexNode.innerHTML =
 				'Процесс определения текущей рыночной цены конкретной квартиры. Он основывается на множестве факторов, таких как размер квартиры, расположение, состояние, уровень спроса на рынке, анализ сравнимых продаж и другие релевантные данные.';
 			console.warn(error);
+		} finally {
+			window.dispatchEvent(new CustomEvent('domWasUpdated'));
 		}
 	};
 })();
