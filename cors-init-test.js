@@ -15,7 +15,6 @@ const getData = (function () {
 			mode: 'cors',
 			method: 'GET',
 			headers,
-			credentials: 'include',
 		};
 		fetch('https://lk.vectoranalytics.ru/test.php', opt).then((response) => {
 			console.log(response);
